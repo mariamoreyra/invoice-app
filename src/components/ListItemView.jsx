@@ -1,5 +1,6 @@
-import React from 'react'
-import RowItemView from './RowItemView'
+import React from 'react';
+import RowItemView from './RowItemView';
+import PropTypes from 'prop-types';
 
 const ListItemView = ({ title, items }) => {
     return (
@@ -24,3 +25,8 @@ const ListItemView = ({ title, items }) => {
 }
 
 export default ListItemView
+
+ListItemView.propTypes = {
+    title: PropTypes.string.isRequired,
+    items: PropTypes.array.isRequired,
+}

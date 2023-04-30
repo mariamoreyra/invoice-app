@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const CompanyView = ({title, company}) => {
     return (
@@ -13,3 +15,8 @@ const CompanyView = ({title, company}) => {
 }
 
 export default CompanyView
+
+CompanyView.prototype = {
+    title: PropTypes.string.isRequired,
+    company: PropTypes.object.isRequired,
+}

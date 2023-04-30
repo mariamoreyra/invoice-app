@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const ClientView = ({title, client}) => {
     return (
@@ -14,3 +16,8 @@ const ClientView = ({title, client}) => {
 }
 
 export default ClientView
+
+ClientView.propTypes = {
+    title: PropTypes.string.isRequired,
+    client: PropTypes.object.isRequired,
+}

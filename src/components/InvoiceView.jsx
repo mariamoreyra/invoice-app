@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const InvoiceView = ({id, name}) => {
     return (
@@ -12,3 +13,8 @@ const InvoiceView = ({id, name}) => {
 }
 
 export default InvoiceView
+
+InvoiceView.prototype = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+}
