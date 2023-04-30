@@ -1,5 +1,9 @@
 import React from 'react'
 import { getInvoice } from '../services/getInvoice'
+import InvoiceView from './InvoiceView';
+import ClientView from './ClientView';
+import CompanyView from './CompanyView';
+import ListItemView from './ListItemView';
 
 function InvoiceApp() {
     const invoice = getInvoice();
@@ -13,55 +17,18 @@ function InvoiceApp() {
                     </div>
 
                     <div className="card-body">
-
-                        <ul className="list-group">
-                            <li className="list-group-item">id: {invoice.id}</li>
-                            <li className="list-group-item">Name: {invoice.name}</li>
-                        </ul>
+                        <InvoiceView id={invoice.id} name={invoice.name}></InvoiceView>
 
                         <div className="row my-3">
                             <div className="col">
-                                <h3>Datos del Cliente</h3>
-                                <ul className="list-group">
-                                    <li className="list-group-item active">{invoice.client.name} {invoice.client.lastName}</li>
-                                    <li className="list-group-item">{invoice.client.address.country} {invoice.client.address.city}</li>
-                                    <li className="list-group-item">{invoice.client.address.street} {invoice.client.address.number}</li>
-                                </ul>
+                                <ClientView title={'Datos del Cliente'} client={invoice.client}></ClientView>
                             </div>
-
 
                             <div className="col" >
-                                <h3>Datos de la empresa</h3>
-                                <ul className="list-group">
-                                    <li className="list-group-item active">{invoice.company.name}</li>
-                                    <li className="list-group-item">{invoice.company.fiscalNumber}</li>
-                                </ul>
+                                <CompanyView title={'Datos de la empresa'} company={invoice.company}></CompanyView>
                             </div>
                         </div>
-
-
-                        <h4>Productos de la Factura</h4>
-                        <table className="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {invoice.items.map(item => {
-                                    return (
-                                        <tr key={item.id}>
-                                            <td>{item.product}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.quantity}</td>
-                                        </tr>
-                                    )
-                                })}
-
-                            </tbody>
-                        </table>
+                        <ListItemView title={'Productos de la Factura'} items={invoice.items}></ListItemView>
                     </div>
                 </div>
             </div>
